@@ -86,7 +86,7 @@
     
     CGFloat insets = (self.frame.size.width - 4 * CHAT_BUTTON_SIZE.width) / 5;
     
-    _photoButton = [self btnWithImage:[UIImage easeImageNamed:@"chatBar_colorMore_photo"]
+    _photoButton = [self btnWithImage:[UIImage imageName:@"chatBar_colorMore_photo"]
                      highlightedImage:[UIImage easeImageNamed:nil]
                                 title:@"相册"];
 
@@ -96,7 +96,7 @@
     _photoButton.tag = MOREVIEW_BUTTON_TAG;
     [_scrollview addSubview:_photoButton];
     
-    _locationButton = [self btnWithImage:[UIImage easeImageNamed:@"chatBar_colorMore_location"]
+    _locationButton = [self btnWithImage:[UIImage imageName:@"chatBar_colorMore_location"]
                         highlightedImage:[UIImage easeImageNamed:nil]
                                    title:@"位置"];
     _locationButton.accessibilityIdentifier = @"location";
@@ -105,7 +105,7 @@
     _locationButton.tag = MOREVIEW_BUTTON_TAG + 1;
     [_scrollview addSubview:_locationButton];
     
-    _takePicButton = [self btnWithImage:[UIImage easeImageNamed:@"chatBar_colorMore_camera"]
+    _takePicButton = [self btnWithImage:[UIImage imageName:@"chatBar_colorMore_camera"]
                        highlightedImage:[UIImage easeImageNamed:nil]
                                   title:@"拍照"];
     [_takePicButton setFrame:CGRectMake(insets * 3 + CHAT_BUTTON_SIZE.width * 2, 10, CHAT_BUTTON_SIZE.width , CHAT_BUTTON_SIZE.height)];
@@ -117,7 +117,7 @@
     CGRect frame = self.frame;
     if (type == EMChatToolbarTypeChat) {
         frame.size.height = 150;
-        _audioCallButton = [self btnWithImage:[UIImage easeImageNamed:@"chatBar_colorMore_audioCall"]
+        _audioCallButton = [self btnWithImage:[UIImage imageName:@"chatBar_colorMore_audioCall"]
                              highlightedImage:[UIImage easeImageNamed:nil]
                                         title:@"语音"];
         [_audioCallButton setFrame:CGRectMake(insets * 4 + CHAT_BUTTON_SIZE.width * 3, 10, CHAT_BUTTON_SIZE.width , CHAT_BUTTON_SIZE.height)];
@@ -125,7 +125,7 @@
         _audioCallButton.tag = MOREVIEW_BUTTON_TAG + 3;
         [_scrollview addSubview:_audioCallButton];
         
-        _videoCallButton = [self btnWithImage:[UIImage easeImageNamed:@"chatBar_colorMore_videoCall"]
+        _videoCallButton = [self btnWithImage:[UIImage imageName:@"chatBar_colorMore_videoCall"]
                              highlightedImage:[UIImage easeImageNamed:nil]
                                         title:@"视频"];
         [_videoCallButton setFrame:CGRectMake(insets, 10 * 2 + CHAT_BUTTON_SIZE.height + 10, CHAT_BUTTON_SIZE.width , CHAT_BUTTON_SIZE.height)];
