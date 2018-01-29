@@ -12,7 +12,7 @@
 
 #import "EaseChatBarMoreView.h"
 
-#define CHAT_BUTTON_SIZE CGSizeMake(50,60)
+#define CHAT_BUTTON_SIZE CGSizeMake(50,80)
 #define INSETS 10
 #define MOREVIEW_COL 4
 #define MOREVIEW_ROW 2
@@ -96,14 +96,14 @@
     _photoButton.tag = MOREVIEW_BUTTON_TAG;
     [_scrollview addSubview:_photoButton];
     
-    _locationButton = [self btnWithImage:[UIImage imageNamed:@"chatBar_colorMore_location"]
-                        highlightedImage:[UIImage easeImageNamed:nil]
-                                   title:@"位置"];
-    _locationButton.accessibilityIdentifier = @"location";
-    [_locationButton setFrame:CGRectMake(insets * 2 + CHAT_BUTTON_SIZE.width, 10, CHAT_BUTTON_SIZE.width , CHAT_BUTTON_SIZE.height)];
-    [_locationButton addTarget:self action:@selector(locationAction) forControlEvents:UIControlEventTouchUpInside];
-    _locationButton.tag = MOREVIEW_BUTTON_TAG + 1;
-    [_scrollview addSubview:_locationButton];
+//    _locationButton = [self btnWithImage:[UIImage imageNamed:@"chatBar_colorMore_location"]
+//                        highlightedImage:[UIImage easeImageNamed:nil]
+//                                   title:@"位置"];
+//    _locationButton.accessibilityIdentifier = @"location";
+//    [_locationButton setFrame:CGRectMake(insets * 2 + CHAT_BUTTON_SIZE.width, 10, CHAT_BUTTON_SIZE.width , CHAT_BUTTON_SIZE.height)];
+//    [_locationButton addTarget:self action:@selector(locationAction) forControlEvents:UIControlEventTouchUpInside];
+//    _locationButton.tag = MOREVIEW_BUTTON_TAG + 1;
+//    [_scrollview addSubview:_locationButton];
     
     _takePicButton = [self btnWithImage:[UIImage imageNamed:@"chatBar_colorMore_camera"]
                        highlightedImage:[UIImage easeImageNamed:nil]
