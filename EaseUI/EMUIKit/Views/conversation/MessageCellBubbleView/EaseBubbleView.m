@@ -41,7 +41,11 @@
     if (self) {
         _isSender = isSender;
         _margin = margin;
-        
+        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+        maskLayer.fillColor = [UIColor clearColor].CGColor;
+        maskLayer.contentsCenter = CGRectMake(.7f, .7f, .1f, .1f);
+        maskLayer.contentsScale = [UIScreen mainScreen].scale;
+        self.layer.mask = maskLayer;
         _marginConstraints = [NSMutableArray array];
     }
     
@@ -79,5 +83,18 @@
     
     return _backgroundImageView;
 }
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.maskView.frame = CGRectInset(self.bounds, 0, 0);
+}
+
+- (void)layoutSublayersOfLayer:(CALayer *)layer
+{
+    [super layoutSublayersOfLayer:layer];
+    self.layer.mask.frame = CGRectInset(self.bounds, 0, 0);
+}
+
 
 @end
