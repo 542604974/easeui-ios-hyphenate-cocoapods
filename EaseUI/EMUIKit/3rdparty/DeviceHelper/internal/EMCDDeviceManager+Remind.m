@@ -24,21 +24,25 @@ void EMSystemSoundFinishedPlayingCallback(SystemSoundID sound_id, void* user_dat
 {
     // Path for the audio file
     NSURL *bundlePath = [[NSBundle mainBundle] URLForResource:@"EaseUIResource" withExtension:@"bundle"];
-    NSURL *audioPath = [[NSBundle bundleWithURL:bundlePath] URLForResource:@"in" withExtension:@"caf"];
+    if (bundlePath != nil) {
+        NSURL *audioPath = [[NSBundle bundleWithURL:bundlePath] URLForResource:@"in" withExtension:@"caf"];
+        
+        SystemSoundID soundID;
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)(audioPath), &soundID);
+        // Register the sound completion callback.
+        AudioServicesAddSystemSoundCompletion(soundID,
+                                              NULL, // uses the main run loop
+                                              NULL, // uses kCFRunLoopDefaultMode
+                                              EMSystemSoundFinishedPlayingCallback, // the name of our custom callback function
+                                              NULL // for user data, but we don't need to do that in this case, so we just pass NULL
+                                              );
+        
+        AudioServicesPlaySystemSound(soundID);
+        return soundID;
+    }
 
-    SystemSoundID soundID;
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)(audioPath), &soundID);
-    // Register the sound completion callback.
-    AudioServicesAddSystemSoundCompletion(soundID,
-                                          NULL, // uses the main run loop
-                                          NULL, // uses kCFRunLoopDefaultMode
-                                          EMSystemSoundFinishedPlayingCallback, // the name of our custom callback function
-                                          NULL // for user data, but we don't need to do that in this case, so we just pass NULL
-                                          );
     
-    AudioServicesPlaySystemSound(soundID);
-    
-    return soundID;
+    return nil;
 }
 
 - (void)playVibration
